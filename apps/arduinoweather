@@ -1,1 +1,53 @@
+setInterval(() => {
 
+  g.clear();
+
+  //establish values
+  let time = require("locale").time(new Date(), 1); // 12-hour format
+  //temporary values
+  let earthq = 0;
+  let temperature = 24.40;
+  let humidity = 26.00;
+  let dewPoint = 3.61;
+  let light = "cloudy";
+
+  //display local time
+  g.setFontAlign(0, 0);
+  g.setFont("Vector", 30);
+  g.drawString(time, g.getWidth()/2, g.getHeight()/2);
+
+  //display temp
+  g.setFontAlign(0, 0);
+  g.setFont("6x8");
+  g.drawString("Temperature: " + temperature + "°C", g.getWidth()/2, g.getHeight()/3, 10, 20);
+
+  //display humidity
+  g.setFontAlign(0 ,0);
+  g.setFont("6x8");
+  g.drawString("Humidity: " + humidity + "%", g.getWidth()/2, g.getHeight()/4, 10, 20);
+
+  //display dew point
+  g.setFontAlign(0 ,0);
+  g.setFont("6x8");
+  g.drawString("Dew Point: " + dewPoint, g.getWidth()/2, g.getHeight()/1.25, 10, 20);
+
+  //display light coverage
+  g.setFontAlign(0 ,0);
+  g.setFont("6x8:3");
+  g.setColor(0, 0, 1);
+  g.drawString(light, g.getWidth()/2, g.getHeight()/1.5, 10, 20);//add icon to this line
+
+  //earthquake detection
+  if (earthq > 0) {
+    g.clear();
+    g.setBgColor(1, 0, 0);
+    g.setFontAlign(0, 0);
+    g.setFont("Vector", 25);
+    g.drawString("EARTHQUAKE", g.getWidth()/2, g.getHeight()/2.5);
+    g.setFontAlign(0, 0);
+    g.setFont("Vector", 25);
+    g.drawString("WARNING", g.getWidth()/2, g.getHeight()/1.5);
+  }
+
+//g.flip();
+  }, 1000);
